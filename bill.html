@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill — Tiffin Center</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  @media print{
+    .tc-header, .tc-footer, #bill-actions, #tc-toast-container{display:none !important;}
+    body{padding-top:0;background:#fff;}
+    .bill-card{box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="tc-header" id="tc-header" data-active="orders" data-base=""></header>
+
+<section class="section" style="padding-top:34px;">
+  <div class="container">
+    <div class="section-head text-center">
+      <div class="eyebrow">Order Confirmed</div>
+      <h2>Order Placed Successfully!</h2>
+    </div>
+
+    <div class="bill-card" id="bill-container"></div>
+
+    <div class="text-center" id="bill-actions" style="display:none;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
+      <button type="button" class="btn btn-dark" id="print-bill-btn"><i class="fa-solid fa-print"></i> Print Bill</button>
+      <button type="button" class="btn btn-copper" id="download-pdf-btn"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+      <button type="button" class="btn btn-primary" id="new-order-btn"><i class="fa-solid fa-plus"></i> New Order</button>
+    </div>
+  </div>
+</section>
+
+<footer class="tc-footer" id="tc-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/bill.js"></script>
+</body>
+</html>

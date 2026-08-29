@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orders — Tiffin Center Admin</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar" data-admin-sidebar>
+    <div class="admin-sidebar-brand"><span class="steam-mark"><span></span><span></span><span></span></span> Tiffin Admin</div>
+    <nav class="admin-sidebar-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu Management</a>
+      <a href="orders.html" class="active"><i class="fa-solid fa-receipt"></i> Orders</a>
+      <a href="tables.html"><i class="fa-solid fa-chair"></i> Tables</a>
+      <a href="qr-codes.html"><i class="fa-solid fa-qrcode"></i> QR Codes</a>
+    </nav>
+    <div class="admin-sidebar-foot">
+      <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Website</a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <button class="admin-mobile-toggle" data-admin-toggle aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+        <h1 style="display:inline;">Orders</h1>
+        <div class="admin-topbar-sub">Manage order status and view bills</div>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-panel">
+        <div class="filters-bar">
+          <select id="order-status-filter">
+            <option value="">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Preparing">Preparing</option>
+            <option value="Ready">Ready</option>
+            <option value="Completed">Completed</option>
+          </select>
+          <select id="order-table-filter">
+            <option value="">All Tables</option>
+            <option value="1">Table 1</option><option value="2">Table 2</option><option value="3">Table 3</option>
+            <option value="4">Table 4</option><option value="5">Table 5</option><option value="6">Table 6</option>
+          </select>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Order ID</th><th>Table</th><th>Customer</th><th>Items</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="orders-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    tcRenderOrdersTable();
+    document.getElementById("order-status-filter").addEventListener("change", tcRenderOrdersTable);
+    document.getElementById("order-table-filter").addEventListener("change", tcRenderOrdersTable);
+    setInterval(tcRenderOrdersTable, 5000);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Tiffin Center</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar" data-admin-sidebar>
+    <div class="admin-sidebar-brand"><span class="steam-mark"><span></span><span></span><span></span></span> Tiffin Admin</div>
+    <nav class="admin-sidebar-nav">
+      <a href="dashboard.html" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu Management</a>
+      <a href="orders.html"><i class="fa-solid fa-receipt"></i> Orders</a>
+      <a href="tables.html"><i class="fa-solid fa-chair"></i> Tables</a>
+      <a href="qr-codes.html"><i class="fa-solid fa-qrcode"></i> QR Codes</a>
+    </nav>
+    <div class="admin-sidebar-foot">
+      <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Website</a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <button class="admin-mobile-toggle" data-admin-toggle aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+        <h1 style="display:inline;">Dashboard</h1>
+        <div class="admin-topbar-sub">Overview of orders, revenue &amp; tables</div>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div class="stat-grid" id="dashboard-stats"></div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-head">
+          <h3>Recent Orders</h3>
+          <a href="orders.html" class="btn btn-ghost btn-sm">View All</a>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Order ID</th><th>Table</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody id="dashboard-recent-orders"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-panel">
+        <div class="admin-panel-head"><h3>Quick Links</h3></div>
+        <div class="grid-2">
+          <a href="menu.html" class="btn btn-outline" style="color:var(--brown);border-color:var(--line);justify-content:flex-start;">
+            <i class="fa-solid fa-utensils"></i> Manage Menu (<span id="dashboard-menu-count">0</span> items)
+          </a>
+          <a href="qr-codes.html" class="btn btn-outline" style="color:var(--brown);border-color:var(--line);justify-content:flex-start;">
+            <i class="fa-solid fa-qrcode"></i> Print Table QR Codes
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+<script>document.addEventListener("DOMContentLoaded", tcRenderDashboardStats);</script>
+</body>
+</html>

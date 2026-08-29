@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table QR Codes — Tiffin Center Admin</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+  <aside class="admin-sidebar no-print" data-admin-sidebar>
+    <div class="admin-sidebar-brand"><span class="steam-mark"><span></span><span></span><span></span></span> Tiffin Admin</div>
+    <nav class="admin-sidebar-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="menu.html"><i class="fa-solid fa-utensils"></i> Menu Management</a>
+      <a href="orders.html"><i class="fa-solid fa-receipt"></i> Orders</a>
+      <a href="tables.html"><i class="fa-solid fa-chair"></i> Tables</a>
+      <a href="qr-codes.html" class="active"><i class="fa-solid fa-qrcode"></i> QR Codes</a>
+    </nav>
+    <div class="admin-sidebar-foot">
+      <a href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Website</a>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-topbar no-print">
+      <div>
+        <button class="admin-mobile-toggle" data-admin-toggle aria-label="Toggle sidebar"><i class="fa-solid fa-bars"></i></button>
+        <h1 style="display:inline;">Table QR Codes</h1>
+        <div class="admin-topbar-sub">Table 1 to Table 6 — download or print for placing on tables</div>
+      </div>
+      <button class="btn btn-primary" id="print-all-qr-btn"><i class="fa-solid fa-print"></i> Print All QR Codes</button>
+    </header>
+
+    <div class="admin-content">
+      <div class="form-card no-print" style="margin-bottom:20px;border-left:4px solid var(--copper);">
+        <p style="margin:0;font-size:13px;"><i class="fa-solid fa-circle-info"></i>
+          Each QR encodes <span class="mono">index.html?table=N</span> using this site's current URL
+          (<span class="mono" id="qr-current-origin"></span>) — it updates automatically once deployed, no manual editing needed.</p>
+      </div>
+      <div class="qr-grid" id="qr-codes-grid"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/admin.js"></script>
+<script src="../js/qr.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("qr-current-origin").textContent = window.location.origin + window.location.pathname.replace(/admin\/.*$/, "");
+  });
+</script>
+</body>
+</html>
